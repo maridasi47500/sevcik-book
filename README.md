@@ -2818,3 +2818,281 @@ Exemples de titres générés automatiquement :
 Pour que cela fonctionne, votre table Exercises doit avoir une relation "Self-referential" (un exercice pointe vers un autre).
 Ruby
 # sevcik-book
+'est un projet ambitieux et très précis. Intégrer des notations de style LilyPond (qui est la référence pour la gravure musicale algorithmique) avec des contraintes biomécaniques propres au violon crée un outil d'analyse pédagogique puissant.
+
+Voici une proposition de structuration pour ton formulaire Rails, organisée de manière logique pour faciliter la saisie et l'analyse par ton script de "génération de titre".
+🎻 Formulaire d'Analyse Violonistique Intégrée
+1. Bloc : Identité & Contexte (Le "Quoi")
+
+Ce bloc définit l'origine de l'exercice.
+
+    Type de pièce : [ Solo | Exercice | Étude | Passage d'orchestre ]
+
+    Source : f.text_field :source_title, placeholder: "ex: Paganini Caprice No. 24"
+
+    Localisation : Mesure [ ] à [ ]
+
+    Identifiant LilyPond (ID) : f.text_field :lilypond_id (ex: \fragment_A)
+
+2. Bloc : Mécanique de l'Archet (Le "Comment" - Main Droite)
+
+C'est ici que nous intégrons tes spécificités de division d'archet et de direction.
+
+Division de l'Archet (LilyPond Style) :
+
+    Portion : [ Entier (WB) | Demi (HB) | Tiers (1/3) | Quart (1/4) ]
+
+    Localisation physique : [ Talon (Nut) | Milieu (M) | Pointe (Tip) ]
+
+    Segments précis :
+
+        [ ] 1er Tiers | [ ] 2e Tiers | [ ] 3e Tiers
+
+        [ ] 2e & 3e Quarts (Milieu élargi)
+
+Articulations & Signes :
+
+    Direction : [ ⬇ Tiré (Down-bow) | ⬆ Poussé (Up-bow) ]
+
+    Action : [ Broad (Large) | Staccato (Court) | Spiccato (Sautillé) | Ricochet ]
+
+    Instructions spéciales :
+
+        [ ] Lever l'archet (',')
+
+        [ ] Pause expressive (//)
+
+3. Bloc : Mécanique Digitale (La Main Gauche)
+
+Focus sur la justesse, les extensions et les doigtés.
+
+    Corde : [ I (Mi) | II (La) | III (Ré) | IV (Sol) ] ou [ Corde à vide (0) ]
+
+    Position : [ 1ère ... 12ème ]
+
+    Techniques spécifiques :
+
+        [ ] Trille | [ ] Vibrato | [ ] Glissando
+
+        [ ] Pizz Main Gauche (+)
+
+        [ ] Flageolet (Harmonique) - LilyPond : \harmonic
+
+    Maintien des doigts :
+
+        [ ] Laisser le doigt posé (Petit crochet / sustain)
+
+        [ ] Doigt de transition (Silent finger)
+
+4. Bloc : Anatomie & Biomécanique (Le "Casse-tête")
+
+Le point de focus pour l'étudiant.
+
+    Point d'appui : [ Pouce | Poignet | Coude | Épaule ]
+
+    Action corrective :
+
+        [ ] Glisser (Slide)
+
+        [ ] Ne pas lever (Keep down)
+
+        [ ] Pivoter (Pivot)
+
+    Indépendance : [ ] Main gauche levée, archet reste (Indépendance HB/MB)
+
+🧠 Logique de Génération du Titre (Le "Cerveau")
+
+Voici comment structurer ton script (Ruby ou JS) pour qu'il "calcule" le nom de l'exercice en fonction des poids :
+Ruby
+
+def generate_title(params)
+  prefix = ""
+  core = ""
+  suffix = ""
+
+  # Règle 1 : Priorité Biomécanique
+  if params[:body_focus].present? && params[:finger_constraint].present?
+    prefix = "Coordination #{params[:body_focus]} / Doigt #{params[:finger_constraint]}"
+  
+  # Règle 2 : Priorité Technique
+  elsif params[:technique].include?("Harmonic") || params[:interval].present?
+    prefix = "Étude technique : #{params[:interval]} et Harmoniques"
+  
+  # Règle 3 : Par défaut sur la pièce
+  else
+    prefix = "Étude sur #{params[:source_title]}"
+  end
+
+  # Ajout de la composante Archet ( LilyPond Style )
+  if params[:bow_division].present?
+    suffix = "en #{params[:bow_division]} à la #{params[:bow_location]}"
+  end
+
+  "#{prefix} (#{params[:measures]}) #{suffix}"
+end
+
+🛠 Exemple d'implémentation "Hybrid" (Vue Rails)
+Extrait de code
+
+<div class="form-section">
+  <h3>Division de l'Archet</h3>
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-outline-primary">
+      <%= f.radio_button :bow_division, "WB" %> Archet Entier
+    </label>
+    <label class="btn btn-outline-primary">
+      <%= f.radio_button :bow_division, "1/2" %> Demi-Archet
+    </label>
+  </div>
+
+  <div class="checkbox-group">
+    <%= f.check_box :keep_finger_down %>
+    <%= f.label :keep_finger_down, "Petit crochet (Doigt posé)" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :lilypond_code, "Notation LilyPond spécifique" %>
+    <%= f.text_area :lilypond_code, placeholder: "ex: e'4\\downbow ~ e'8[ f'8]" %>
+  </div>
+</div>
+
+Pourquoi cette structure fonctionne :
+
+    Sémantique : Elle sépare l'intention musicale (le quoi) de la réalisation physique (le comment).
+
+    Modularité : Tu peux facilement ajouter des champs comme "Vitesse de l'archet" ou "Pression" plus tard.
+
+    Analyse de données : En enregistrant ces champs de manière structurée, tu peux générer des statistiques sur ce que l'élève travaille le plus (ex: "70% de tes exercices concernent le passage du pouce en 3e position").
+
+Est-ce que tu souhaites que j'approfondisse la partie LilyPond pour générer automatiquement le code de la partition à partir de ces cases cochées ?
+Voici une fusion optimisée de tes deux structures. J'ai consolidé les doublons pour créer un workflow logique qui part de la théorie musicale (l'intention) vers la biomécanique (l'exécution physique), tout en intégrant la nomenclature précise du violon et les balises LilyPond.
+🎻 Formulaire d'Analyse Violonistique Unifié
+1. Bloc : Identité & Contexte (Le "Quoi")
+
+Ce bloc définit l'origine et le cadre musical de l'exercice.
+
+    Type de pièce : [Solo] [Exercice] [Étude] [Passage d'orchestre]
+
+    Source : f.text_field :source_title (ex: Violin Piece ID / Opus)
+
+    Localisation : Mesures [  ] à [  ]
+
+    Identifiant LilyPond : f.text_field :lilypond_id (ex: \fragment_A)
+
+    Théorie : * Tonalité : [Select Key] | Rythme : [Select Time]
+
+        Nuance : [pp] [p] [mp] [mf] [f] [ff]
+
+        Caractère : [Dolce] [Maestoso] [Sotto Voce] [Scherzando]
+
+2. Bloc : Structure & Oreille (La Théorie)
+
+Analyse de la nature harmonique et structurelle.
+
+    Nature : ( ) Gamme | ( ) Chromatique | ( ) Arpège | ( ) Accords | ( ) Rythme Répétitif
+
+    Type d'Accord : [7th Dim] [9th] [Maj/Min] [Broken Chords]
+
+    Intervalles (Checkboxes) : [ ] 3rds [ ] 6ths [ ] 8ves [ ] 10ths [ ] 4-note chords
+
+    Contrepoint : * Voix : [ ] Soprano [ ] Alto [ ] Tenor [ ] Bass
+
+        Voix Mobile : [None / Soprano / Bass / Inner]
+2bis. Bloc : Morphologie Rythmique (Le "Temps")
+
+Détail des durées et des cellules rythmiques rencontrées.
+
+    Unités de mesure (LilyPond durations) :
+
+        [ ] Ronde (1) | [ ] Blanche (2) | [ ] Noire (4) | [ ] Croche (8) | [ ] Double (16) | [ ] Triple (32)
+
+    Modificateurs :
+
+        [ ] Pointé (dot) | [ ] Triolet / N-uolet (tuplet) | [ ] Liaison de prolongation (tie)
+
+    Cellules Rythmiques Types :
+
+        [ ] Crochet-pointée/double (Louré style)
+
+        [ ] Syncope
+
+        [ ] Contretemps
+
+        [ ] Groupe de notes rapides (Passage de virtuosité)
+
+    Silence : [ ] Soupir | [ ] Point d'orgue (fermata)
+
+3. Bloc : Mécanique de l'Archet (Main Droite)
+
+Utilisation des divisions d'archet et techniques de conduite.
+
+    Division (LilyPond Style) :
+
+        Portion : [WB (Entier)] [HB (Demi)] [1/3 (Tiers)] [1/4 (Quart)]
+
+        Localisation : [Nut (Talon)] [M (Milieu)] [Tip (Pointe)]
+
+        Précision : [ ] 1er Tiers | [ ] 2e Tiers | [ ] 3e Tiers | [ ] 2e & 3e Quarts
+
+    Direction & Articulation :
+
+        Coup : [⬇ Tiré (Down)] [⬆ Poussé (Up)] [Broad (Large)]
+
+        Technique : [Legato] [Martelé] [Spiccato] [Ricochet] [Golpe di arco]
+
+        Signes : [ ] Lever l'archet (',') | [ ] Pause expressive (//)
+
+    Phrasé : [Slurred by 2] [Slurred by 4] [Detached] | Variations : [ 0-99 ]
+
+4. Bloc : Mécanique Digitale (Main Gauche)
+
+Positionnement et articulations des doigts.
+
+    Corde : [ ] G (IV) [ ] D (III) [ ] A (II) [ ] E (I) | [ ] Corde à vide
+
+    Position : [1st ... 12th]
+
+    Techniques : * [ ] Double-stops | [ ] Trill | [ ] Vibrato | [ ] Glissando
+
+        [ ] Pizz (Main gauche +) | [ ] Flageolet (\harmonic □)
+
+    Maintien : * [ ] Laisser posé (Petit crochet) | [ ] Doigt de transition (□ sans pied)
+
+5. Bloc : Biomécanique (Le "Casse-tête")
+
+Le focus interne de l'élève durant l'exécution.
+
+    Point d'appui (Focus) : [Pouce] [Poignet] [Coude] [Épaule]
+
+    Contrainte Doigt : [ ] 1er [ ] 2e [ ] 3e [ ] 4e
+
+    Action : * [ ] Glisser (Slide) | [ ] Ne pas lever (Keep down) | [ ] Pivoter (Pivot)
+
+        [ ] Indépendance (MG levée / Archet reste sur corde)
+
+🧠 Le "Cerveau" : Logique de Titrage Automatique
+
+Le script (JS ou Ruby) calcule le titre selon un système de poids de priorité.
+Règle de Priorité (Cascading) :
+
+    Priorité Physique (Niveau 1) : * Si Focus Corps ET Contrainte Doigt sont cochés :
+
+        Titre : "Coordination [Focus] : Travail du [Doigt] sur [Source]"
+
+    Priorité Technique (Niveau 2) : * Si Flageolet OU Intervalle (ex: 10ths) est coché :
+
+        Titre : "Étude de [Technique] - [Source] (Mesures X-Y)"
+
+    Priorité Archet (Niveau 3) :
+
+        Si Division d'archet spécifique (ex: 2/3) est choisie :
+
+        Titre : "Conduite d'archet ([Portion]) : [Source]"
+
+    Défaut (Niveau 4) :
+
+        Titre : "[Type de pièce] : [Source] (Mesures [M1]-[M2])"
+
+Exemple de sortie générée :
+
+    "Coordination Épaule : Travail du 4e doigt (Glissando) en 1/2 archet au talon" > (Généré car l'utilisateur a sélectionné : Épaule + 4e doigt + Glissando + HB + Nut)
