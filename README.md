@@ -1,4 +1,4 @@
-(my beautiful pic)[./mycpi1.png]D’accord 😊 — je vais te proposer une structure claire pour ton dépôt Rails "sevcik-book" avec les modèles, relations et migrations correspondant à ce que tu décris.
+[my beautiful pic](./mycpi1.png)D’accord 😊 — je vais te proposer une structure claire pour ton dépôt Rails "sevcik-book" avec les modèles, relations et migrations correspondant à ce que tu décris.
 Je vais aussi te donner un exemple de seed pour illustrer les données comme "changing of position" ou "formation of tone on G string".
 Structure du projet Rails
 1. Modèles et relations
