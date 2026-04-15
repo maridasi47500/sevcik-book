@@ -1,0 +1,12 @@
+<% content_for :title, "Editing musical fragment" %>
+
+<h1>Editing musical fragment</h1>
+
+<%= render "form", musical_fragment: @musical_fragment %>
+
+<br>
+
+<div>
+  <%= link_to "Show this musical fragment", @musical_fragment %> |
+  <%= link_to "Back to musical fragments", musical_fragments_path %>
+</div>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Fingerings" %>
+
+<h1>Fingerings</h1>
+
+<div id="fingerings">
+  <% @fingerings.each do |fingering| %>
+    <%= render fingering %>
+    <p>
+      <%= link_to "Show this fingering", fingering %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New fingering", new_fingering_path %>

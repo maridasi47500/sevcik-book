@@ -1,0 +1,2 @@
+class SourceTitle < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class BowSign < ApplicationRecord
+end

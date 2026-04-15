@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Bow articulations" %>
+
+<h1>Bow articulations</h1>
+
+<div id="bow_articulations">
+  <% @bow_articulations.each do |bow_articulation| %>
+    <%= render bow_articulation %>
+    <p>
+      <%= link_to "Show this bow articulation", bow_articulation %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New bow articulation", new_bow_articulation_path %>

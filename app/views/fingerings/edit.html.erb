@@ -1,0 +1,12 @@
+<% content_for :title, "Editing fingering" %>
+
+<h1>Editing fingering</h1>
+
+<%= render "form", fingering: @fingering %>
+
+<br>
+
+<div>
+  <%= link_to "Show this fingering", @fingering %> |
+  <%= link_to "Back to fingerings", fingerings_path %>
+</div>

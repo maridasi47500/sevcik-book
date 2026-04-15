@@ -1,0 +1,12 @@
+<% content_for :title, "Editing measure unit" %>
+
+<h1>Editing measure unit</h1>
+
+<%= render "form", measure_unit: @measure_unit %>
+
+<br>
+
+<div>
+  <%= link_to "Show this measure unit", @measure_unit %> |
+  <%= link_to "Back to measure units", measure_units_path %>
+</div>

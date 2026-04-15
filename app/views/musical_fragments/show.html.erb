@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @musical_fragment %>
+
+<div>
+  <%= link_to "Edit this musical fragment", edit_musical_fragment_path(@musical_fragment) %> |
+  <%= link_to "Back to musical fragments", musical_fragments_path %>
+
+  <%= button_to "Destroy this musical fragment", @musical_fragment, method: :delete %>
+</div>

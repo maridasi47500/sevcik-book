@@ -1,0 +1,11 @@
+<% content_for :title, "New mystring" %>
+
+<h1>New mystring</h1>
+
+<%= render "form", mystring: @mystring %>
+
+<br>
+
+<div>
+  <%= link_to "Back to mystrings", mystrings_path %>
+</div>

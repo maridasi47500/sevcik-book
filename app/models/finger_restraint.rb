@@ -1,0 +1,2 @@
+class FingerRestraint < ApplicationRecord
+end

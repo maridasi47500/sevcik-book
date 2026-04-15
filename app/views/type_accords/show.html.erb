@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @type_accord %>
+
+<div>
+  <%= link_to "Edit this type accord", edit_type_accord_path(@type_accord) %> |
+  <%= link_to "Back to type accords", type_accords_path %>
+
+  <%= button_to "Destroy this type accord", @type_accord, method: :delete %>
+</div>

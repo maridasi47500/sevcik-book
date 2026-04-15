@@ -1,0 +1,2 @@
+class MusicalPhrasing < ApplicationRecord
+end

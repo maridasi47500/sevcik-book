@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @silence %>
+
+<div>
+  <%= link_to "Edit this silence", edit_silence_path(@silence) %> |
+  <%= link_to "Back to silences", silences_path %>
+
+  <%= button_to "Destroy this silence", @silence, method: :delete %>
+</div>

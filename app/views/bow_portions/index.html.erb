@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Bow portions" %>
+
+<h1>Bow portions</h1>
+
+<div id="bow_portions">
+  <% @bow_portions.each do |bow_portion| %>
+    <%= render bow_portion %>
+    <p>
+      <%= link_to "Show this bow portion", bow_portion %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New bow portion", new_bow_portion_path %>

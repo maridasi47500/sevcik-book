@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @rhythmic_type %>
+
+<div>
+  <%= link_to "Edit this rhythmic type", edit_rhythmic_type_path(@rhythmic_type) %> |
+  <%= link_to "Back to rhythmic types", rhythmic_types_path %>
+
+  <%= button_to "Destroy this rhythmic type", @rhythmic_type, method: :delete %>
+</div>

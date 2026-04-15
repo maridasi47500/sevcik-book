@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  source_title: one
+  start_measure: 1
+  end_measure: 1
+  lilypond_id: MyString
+  nuance: one
+  caractere: one
+  bow_portion: one
+  bow_location: one
+  position: one
+  focus: one
+
+two:
+  title: MyString
+  source_title: two
+  start_measure: 1
+  end_measure: 1
+  lilypond_id: MyString
+  nuance: two
+  caractere: two
+  bow_portion: two
+  bow_location: two
+  position: two
+  focus: two

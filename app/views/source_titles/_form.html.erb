@@ -1,0 +1,37 @@
+<%= form_with(model: source_title) do |form| %>
+  <% if source_title.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(source_title.errors.count, "error") %> prohibited this source_title from being saved:</h2>
+
+      <ul>
+        <% source_title.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :musical_instrument_id, style: "display: block" %>
+    <%= form.text_field :musical_instrument_id %>
+  </div>
+
+  <div>
+    <%= form.label :composer, style: "display: block" %>
+    <%= form.text_field :composer %>
+  </div>
+
+  <div>
+    <%= form.label :id_opus, style: "display: block" %>
+    <%= form.text_field :id_opus %>
+  </div>
+
+  <div>
+    <%= form.label :number, style: "display: block" %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing mystring" %>
+
+<h1>Editing mystring</h1>
+
+<%= render "form", mystring: @mystring %>
+
+<br>
+
+<div>
+  <%= link_to "Show this mystring", @mystring %> |
+  <%= link_to "Back to mystrings", mystrings_path %>
+</div>

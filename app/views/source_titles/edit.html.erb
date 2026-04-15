@@ -1,0 +1,12 @@
+<% content_for :title, "Editing source title" %>
+
+<h1>Editing source title</h1>
+
+<%= render "form", source_title: @source_title %>
+
+<br>
+
+<div>
+  <%= link_to "Show this source title", @source_title %> |
+  <%= link_to "Back to source titles", source_titles_path %>
+</div>

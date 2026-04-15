@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Type accords" %>
+
+<h1>Type accords</h1>
+
+<div id="type_accords">
+  <% @type_accords.each do |type_accord| %>
+    <%= render type_accord %>
+    <p>
+      <%= link_to "Show this type accord", type_accord %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New type accord", new_type_accord_path %>

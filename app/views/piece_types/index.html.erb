@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Piece types" %>
+
+<h1>Piece types</h1>
+
+<div id="piece_types">
+  <% @piece_types.each do |piece_type| %>
+    <%= render piece_type %>
+    <p>
+      <%= link_to "Show this piece type", piece_type %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New piece type", new_piece_type_path %>

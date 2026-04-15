@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Modificateurs" %>
+
+<h1>Modificateurs</h1>
+
+<div id="modificateurs">
+  <% @modificateurs.each do |modificateur| %>
+    <%= render modificateur %>
+    <p>
+      <%= link_to "Show this modificateur", modificateur %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New modificateur", new_modificateur_path %>

@@ -1,0 +1,2 @@
+class TypeAccord < ApplicationRecord
+end

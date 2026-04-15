@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bow_articulation %>
+
+<div>
+  <%= link_to "Edit this bow articulation", edit_bow_articulation_path(@bow_articulation) %> |
+  <%= link_to "Back to bow articulations", bow_articulations_path %>
+
+  <%= button_to "Destroy this bow articulation", @bow_articulation, method: :delete %>
+</div>

@@ -1,0 +1,2 @@
+class BowTechnique < ApplicationRecord
+end

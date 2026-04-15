@@ -1,0 +1,2 @@
+class PieceType < ApplicationRecord
+end

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bow_sign %>
+
+<div>
+  <%= link_to "Edit this bow sign", edit_bow_sign_path(@bow_sign) %> |
+  <%= link_to "Back to bow signs", bow_signs_path %>
+
+  <%= button_to "Destroy this bow sign", @bow_sign, method: :delete %>
+</div>

@@ -1,0 +1,22 @@
+<%= form_with(model: harmonique_nature) do |form| %>
+  <% if harmonique_nature.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(harmonique_nature.errors.count, "error") %> prohibited this harmonique_nature from being saved:</h2>
+
+      <ul>
+        <% harmonique_nature.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

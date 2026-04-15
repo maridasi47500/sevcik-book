@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Left hand techniques" %>
+
+<h1>Left hand techniques</h1>
+
+<div id="left_hand_techniques">
+  <% @left_hand_techniques.each do |left_hand_technique| %>
+    <%= render left_hand_technique %>
+    <p>
+      <%= link_to "Show this left hand technique", left_hand_technique %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New left hand technique", new_left_hand_technique_path %>

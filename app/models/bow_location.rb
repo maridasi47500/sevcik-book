@@ -1,0 +1,2 @@
+class BowLocation < ApplicationRecord
+end

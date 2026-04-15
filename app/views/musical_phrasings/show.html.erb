@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @musical_phrasing %>
+
+<div>
+  <%= link_to "Edit this musical phrasing", edit_musical_phrasing_path(@musical_phrasing) %> |
+  <%= link_to "Back to musical phrasings", musical_phrasings_path %>
+
+  <%= button_to "Destroy this musical phrasing", @musical_phrasing, method: :delete %>
+</div>

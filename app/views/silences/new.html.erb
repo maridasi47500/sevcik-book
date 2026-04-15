@@ -1,0 +1,11 @@
+<% content_for :title, "New silence" %>
+
+<h1>New silence</h1>
+
+<%= render "form", silence: @silence %>
+
+<br>
+
+<div>
+  <%= link_to "Back to silences", silences_path %>
+</div>

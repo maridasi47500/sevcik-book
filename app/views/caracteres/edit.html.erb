@@ -1,0 +1,12 @@
+<% content_for :title, "Editing caractere" %>
+
+<h1>Editing caractere</h1>
+
+<%= render "form", caractere: @caractere %>
+
+<br>
+
+<div>
+  <%= link_to "Show this caractere", @caractere %> |
+  <%= link_to "Back to caracteres", caracteres_path %>
+</div>

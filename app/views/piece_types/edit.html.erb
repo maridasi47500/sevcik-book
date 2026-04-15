@@ -1,0 +1,12 @@
+<% content_for :title, "Editing piece type" %>
+
+<h1>Editing piece type</h1>
+
+<%= render "form", piece_type: @piece_type %>
+
+<br>
+
+<div>
+  <%= link_to "Show this piece type", @piece_type %> |
+  <%= link_to "Back to piece types", piece_types_path %>
+</div>

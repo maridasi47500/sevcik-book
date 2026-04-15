@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Finger restraints" %>
+
+<h1>Finger restraints</h1>
+
+<div id="finger_restraints">
+  <% @finger_restraints.each do |finger_restraint| %>
+    <%= render finger_restraint %>
+    <p>
+      <%= link_to "Show this finger restraint", finger_restraint %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New finger restraint", new_finger_restraint_path %>

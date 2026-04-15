@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @piece_type %>
+
+<div>
+  <%= link_to "Edit this piece type", edit_piece_type_path(@piece_type) %> |
+  <%= link_to "Back to piece types", piece_types_path %>
+
+  <%= button_to "Destroy this piece type", @piece_type, method: :delete %>
+</div>

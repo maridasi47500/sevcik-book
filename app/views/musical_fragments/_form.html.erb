@@ -1,0 +1,111 @@
+<%= form_with(model: musical_fragment, class: "contents") do |f| %>
+
+  <fieldset class="border p-4 mb-6">
+    <legend class="text-xl font-bold">1. Identité & Contexte</legend>
+    
+    <div class="field">
+      <%= f.label :source_title_id, "Source (Opus/Piece)" %>
+      <%= f.collection_select :source_title_id, SourceTitle.all, :id, :title, prompt: true %>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <%= f.label :start_measure, "Mesures de" %>
+        <%= f.number_field :start_measure %>
+      </div>
+      <div>
+        <%= f.label :end_measure, "à" %>
+        <%= f.number_field :end_measure %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :lilypond_id, "Identifiant LilyPond" %>
+      <%= f.text_field :lilypond_id, placeholder: "\\fragment_A" %>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <%= f.label :nuance_id %>
+        <%= f.collection_select :nuance_id, Nuance.all, :id, :name %>
+      </div>
+      <div>
+        <%= f.label :caractere_id %>
+        <%= f.collection_select :caractere_id, Caractere.all, :id, :name %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="border p-4 mb-6">
+    <legend class="text-xl font-bold">2. Structure & Oreille</legend>
+    
+    <div class="field">
+      <label>Nature Harmonique</label>
+      <%= f.collection_check_boxes :harmonique_nature_ids, HarmoniqueNature.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <label>Intervalles</label>
+      <%= f.collection_check_boxes :intervalle_ids, Intervalle.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <label>Unités de mesure (Durations)</label>
+      <div class="flex flex-wrap gap-4">
+        <%= f.collection_check_boxes :measure_unit_ids, MeasureUnit.all, :id, :name %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="border p-4 mb-6 bg-blue-50">
+    <legend class="text-xl font-bold">3. Mécanique de l'Archet</legend>
+    
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <%= f.label :bow_portion_id, "Portion (WB/HB)" %>
+        <%= f.collection_select :bow_portion_id, BowPortion.all, :id, :name %>
+      </div>
+      <div>
+        <%= f.label :bow_location_id, "Localisation (Nut/Tip)" %>
+        <%= f.collection_select :bow_location_id, BowLocation.all, :id, :name %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="border p-4 mb-6 bg-green-50">
+    <legend class="text-xl font-bold">4. Mécanique Digitale</legend>
+    
+    <div class="field">
+      <label>Cordes</label>
+      <%= f.collection_check_boxes :mystring_ids, Mystring.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :position_id, "Position" %>
+      <%= f.collection_select :position_id, Position.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <label>Techniques</label>
+      <%= f.collection_check_boxes :left_hand_technique_ids, LeftHandTechnique.all, :id, :name %>
+    </div>
+  </fieldset>
+
+  <fieldset class="border p-4 mb-6 bg-red-50">
+    <legend class="text-xl font-bold">5. Biomécanique</legend>
+    
+    <div class="field">
+      <%= f.label :focus_id, "Point d'appui (Focus)" %>
+      <%= f.collection_select :focus_id, Focus.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <label>Actions spécifiques</label>
+      <%= f.collection_check_boxes :action_ids, Action.all, :id, :name %>
+    </div>
+  </fieldset>
+
+  <div class="inline">
+    <%= f.submit "Enregistrer le fragment", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+class BowArticulation < ApplicationRecord
+end

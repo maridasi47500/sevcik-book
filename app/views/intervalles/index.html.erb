@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Intervalles" %>
+
+<h1>Intervalles</h1>
+
+<div id="intervalles">
+  <% @intervalles.each do |intervalle| %>
+    <%= render intervalle %>
+    <p>
+      <%= link_to "Show this intervalle", intervalle %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New intervalle", new_intervalle_path %>

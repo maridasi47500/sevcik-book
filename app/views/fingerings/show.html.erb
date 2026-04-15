@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fingering %>
+
+<div>
+  <%= link_to "Edit this fingering", edit_fingering_path(@fingering) %> |
+  <%= link_to "Back to fingerings", fingerings_path %>
+
+  <%= button_to "Destroy this fingering", @fingering, method: :delete %>
+</div>

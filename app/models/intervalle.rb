@@ -1,0 +1,2 @@
+class Intervalle < ApplicationRecord
+end

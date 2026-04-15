@@ -1,0 +1,2 @@
+module LeftHandTechniquesHelper
+end

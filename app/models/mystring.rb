@@ -1,0 +1,2 @@
+class Mystring < ApplicationRecord
+end

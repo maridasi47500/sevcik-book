@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Mystrings" %>
+
+<h1>Mystrings</h1>
+
+<div id="mystrings">
+  <% @mystrings.each do |mystring| %>
+    <%= render mystring %>
+    <p>
+      <%= link_to "Show this mystring", mystring %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New mystring", new_mystring_path %>

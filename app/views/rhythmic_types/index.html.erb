@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Rhythmic types" %>
+
+<h1>Rhythmic types</h1>
+
+<div id="rhythmic_types">
+  <% @rhythmic_types.each do |rhythmic_type| %>
+    <%= render rhythmic_type %>
+    <p>
+      <%= link_to "Show this rhythmic type", rhythmic_type %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New rhythmic type", new_rhythmic_type_path %>

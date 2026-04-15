@@ -1,0 +1,11 @@
+<% content_for :title, "New source title" %>
+
+<h1>New source title</h1>
+
+<%= render "form", source_title: @source_title %>
+
+<br>
+
+<div>
+  <%= link_to "Back to source titles", source_titles_path %>
+</div>

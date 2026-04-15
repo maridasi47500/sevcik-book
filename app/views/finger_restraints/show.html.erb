@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @finger_restraint %>
+
+<div>
+  <%= link_to "Edit this finger restraint", edit_finger_restraint_path(@finger_restraint) %> |
+  <%= link_to "Back to finger restraints", finger_restraints_path %>
+
+  <%= button_to "Destroy this finger restraint", @finger_restraint, method: :delete %>
+</div>

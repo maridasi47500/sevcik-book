@@ -1,0 +1,12 @@
+<% content_for :title, "Editing bow articulation" %>
+
+<h1>Editing bow articulation</h1>
+
+<%= render "form", bow_articulation: @bow_articulation %>
+
+<br>
+
+<div>
+  <%= link_to "Show this bow articulation", @bow_articulation %> |
+  <%= link_to "Back to bow articulations", bow_articulations_path %>
+</div>

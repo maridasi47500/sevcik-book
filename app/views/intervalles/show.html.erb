@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @intervalle %>
+
+<div>
+  <%= link_to "Edit this intervalle", edit_intervalle_path(@intervalle) %> |
+  <%= link_to "Back to intervalles", intervalles_path %>
+
+  <%= button_to "Destroy this intervalle", @intervalle, method: :delete %>
+</div>

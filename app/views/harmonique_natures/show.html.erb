@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @harmonique_nature %>
+
+<div>
+  <%= link_to "Edit this harmonique nature", edit_harmonique_nature_path(@harmonique_nature) %> |
+  <%= link_to "Back to harmonique natures", harmonique_natures_path %>
+
+  <%= button_to "Destroy this harmonique nature", @harmonique_nature, method: :delete %>
+</div>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @mystring %>
+
+<div>
+  <%= link_to "Edit this mystring", edit_mystring_path(@mystring) %> |
+  <%= link_to "Back to mystrings", mystrings_path %>
+
+  <%= button_to "Destroy this mystring", @mystring, method: :delete %>
+</div>

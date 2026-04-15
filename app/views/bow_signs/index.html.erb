@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Bow signs" %>
+
+<h1>Bow signs</h1>
+
+<div id="bow_signs">
+  <% @bow_signs.each do |bow_sign| %>
+    <%= render bow_sign %>
+    <p>
+      <%= link_to "Show this bow sign", bow_sign %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New bow sign", new_bow_sign_path %>

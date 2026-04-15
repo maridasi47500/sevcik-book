@@ -1,0 +1,2 @@
+module SilencesHelper
+end

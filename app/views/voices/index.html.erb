@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Voices" %>
+
+<h1>Voices</h1>
+
+<div id="voices">
+  <% @voices.each do |voice| %>
+    <%= render voice %>
+    <p>
+      <%= link_to "Show this voice", voice %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New voice", new_voice_path %>

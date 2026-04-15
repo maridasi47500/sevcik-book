@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bow_technique %>
+
+<div>
+  <%= link_to "Edit this bow technique", edit_bow_technique_path(@bow_technique) %> |
+  <%= link_to "Back to bow techniques", bow_techniques_path %>
+
+  <%= button_to "Destroy this bow technique", @bow_technique, method: :delete %>
+</div>

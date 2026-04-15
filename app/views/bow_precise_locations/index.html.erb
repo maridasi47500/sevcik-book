@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Bow precise locations" %>
+
+<h1>Bow precise locations</h1>
+
+<div id="bow_precise_locations">
+  <% @bow_precise_locations.each do |bow_precise_location| %>
+    <%= render bow_precise_location %>
+    <p>
+      <%= link_to "Show this bow precise location", bow_precise_location %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New bow precise location", new_bow_precise_location_path %>

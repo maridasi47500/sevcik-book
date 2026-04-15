@@ -1,0 +1,11 @@
+<% content_for :title, "New piece type" %>
+
+<h1>New piece type</h1>
+
+<%= render "form", piece_type: @piece_type %>
+
+<br>
+
+<div>
+  <%= link_to "Back to piece types", piece_types_path %>
+</div>

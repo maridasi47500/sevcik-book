@@ -1,0 +1,2 @@
+class BowPortion < ApplicationRecord
+end

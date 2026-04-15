@@ -1,0 +1,22 @@
+<%= form_with(model: bow_technique) do |form| %>
+  <% if bow_technique.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(bow_technique.errors.count, "error") %> prohibited this bow_technique from being saved:</h2>
+
+      <ul>
+        <% bow_technique.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

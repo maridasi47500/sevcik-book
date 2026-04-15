@@ -1,0 +1,2 @@
+module BowTechniquesHelper
+end

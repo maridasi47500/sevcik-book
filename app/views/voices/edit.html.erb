@@ -1,0 +1,12 @@
+<% content_for :title, "Editing voice" %>
+
+<h1>Editing voice</h1>
+
+<%= render "form", voice: @voice %>
+
+<br>
+
+<div>
+  <%= link_to "Show this voice", @voice %> |
+  <%= link_to "Back to voices", voices_path %>
+</div>

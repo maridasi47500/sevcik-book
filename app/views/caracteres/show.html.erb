@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @caractere %>
+
+<div>
+  <%= link_to "Edit this caractere", edit_caractere_path(@caractere) %> |
+  <%= link_to "Back to caracteres", caracteres_path %>
+
+  <%= button_to "Destroy this caractere", @caractere, method: :delete %>
+</div>

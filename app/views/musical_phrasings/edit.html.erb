@@ -1,0 +1,12 @@
+<% content_for :title, "Editing musical phrasing" %>
+
+<h1>Editing musical phrasing</h1>
+
+<%= render "form", musical_phrasing: @musical_phrasing %>
+
+<br>
+
+<div>
+  <%= link_to "Show this musical phrasing", @musical_phrasing %> |
+  <%= link_to "Back to musical phrasings", musical_phrasings_path %>
+</div>

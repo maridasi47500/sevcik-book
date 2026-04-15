@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bow_portion %>
+
+<div>
+  <%= link_to "Edit this bow portion", edit_bow_portion_path(@bow_portion) %> |
+  <%= link_to "Back to bow portions", bow_portions_path %>
+
+  <%= button_to "Destroy this bow portion", @bow_portion, method: :delete %>
+</div>

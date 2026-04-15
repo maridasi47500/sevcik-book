@@ -1,0 +1,2 @@
+class RhythmicType < ApplicationRecord
+end
