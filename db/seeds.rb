@@ -47,3 +47,39 @@ end
 ['Glisser (Slide)', 'Ne pas lever (Keep down)', 'Pivoter (Pivot)', 'Indépendance'].each { |a| Action.find_or_create_by!(name: a) }
 
 puts "Successfully seeded musical nomenclature!"
+# 1. Define the fragment title
+title_to_seed = "Double stops in sixths and fourths"
+
+# 2. Find or create the MusicalFragment first
+fragment = MusicalFragment.find_or_create_by!(title: title_to_seed)
+
+# 3. Define a helper to parse and link associations
+# This method looks at a specific model, checks if its name exists in the title, 
+# and creates the HABTM link if it does.
+def link_associations_from_title(fragment, model_class, association_name)
+  # We fetch all names from the table (e.g., ["Sixth", "Fourth", "Third"])
+  available_records = model_class.all
+  
+  available_records.each do |record|
+    # We use a case-insensitive regex to see if the word exists in the title
+    # Example: /sixths/i matches "sixths" in the title
+    if fragment.title.match?(/#{record.name.downcase}/i)
+      # Link the record if it's not already associated
+      unless fragment.send(association_name).include?(record)
+        fragment.send(association_name) << record
+      end
+    end
+  end
+end
+
+# 4. Execute the parsing for Intervalles
+# Assumes 'intervalles' table has records named "Sixth" and "Fourth"
+link_associations_from_title(fragment, Intervalle, :intervalles)
+
+# 5. Execute the parsing for TypeAccords
+# Assumes 'type_accords' table has a record named "Double stop"
+link_associations_from_title(fragment, TypeAccord, :type_accords)
+
+puts "Successfully processed '#{fragment.title}'"
+puts "Linked Intervals: #{fragment.intervalles.pluck(:name)}"
+puts "Linked Types: #{fragment.type_accords.pluck(:name)}"

@@ -160,14 +160,16 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_15_012816) do
     t.index ["source_title_id"], name: "index_musical_fragments_on_source_title_id"
   end
 
+  create_table "musical_fragments_mystrings", id: false, force: :cascade do |t|
+    t.integer "musical_fragment_id", null: false
+    t.integer "mystring_id", null: false
+    t.index ["musical_fragment_id", "mystring_id"], name: "idx_on_musical_fragment_id_mystring_id_426a97f700"
+    t.index ["mystring_id", "musical_fragment_id"], name: "idx_on_mystring_id_musical_fragment_id_be85a25959"
+  end
+
   create_table "musical_fragments_rhythmic_types", id: false, force: :cascade do |t|
     t.integer "musical_fragment_id", null: false
     t.integer "rhythmic_type_id", null: false
-  end
-
-  create_table "musical_fragments_strings", id: false, force: :cascade do |t|
-    t.integer "musical_fragment_id", null: false
-    t.integer "string_id", null: false
   end
 
   create_table "musical_fragments_type_accords", id: false, force: :cascade do |t|

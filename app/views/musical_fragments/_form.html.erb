@@ -1,11 +1,23 @@
 <%= form_with(model: musical_fragment, class: "contents") do |f| %>
+<% if musical_fragment.errors.any? %>
+  <div class="errors">
+    <h2><%= pluralize(musical_fragment.errors.count, "erreur") %> empêchent l’enregistrement :</h2>
+
+    <ul>
+      <% musical_fragment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 
   <fieldset class="border p-4 mb-6">
     <legend class="text-xl font-bold">1. Identité & Contexte</legend>
     
     <div class="field">
       <%= f.label :source_title_id, "Source (Opus/Piece)" %>
-      <%= f.collection_select :source_title_id, SourceTitle.all, :id, :title, prompt: true %>
+      <%= f.collection_select :source_title_id, SourceTitle.all, :id, :mytitle, prompt: true %>
     </div>
 
     <div class="grid grid-cols-2 gap-4">
