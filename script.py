@@ -53,17 +53,23 @@ if __name__ == "__main__":
 
     try:
         for pdf_file in files:
-            text_output = extract_text_from_scanned_pdf(pdf_file, tesseract_cmd=tesseract_path, lang='eng')
-            print("Extracted Text:\n")
-            print(text_output)
-            mode = "a"
-    
             try:
-                
-                filename="awesomesevcikscores.hey"
-                with open(filename, mode, encoding="utf-8") as file:
-                    file.write(text_output + "\n")  # Add newline for readability
-                print(f"Data successfully written to '{filename}' in mode '{mode}'.")
+              text_output = extract_text_from_scanned_pdf(pdf_file, tesseract_cmd=tesseract_path, lang='eng')
+              print("Extracted Text:\n")
+              print(text_output)
+              mode = "a"
+    
+              try:
+                  
+                  filename2="done.hey"
+                  filename="awesomesevcikscores.hey"
+                  with open(filename2, mode, encoding="utf-8") as file:
+                      file.write(filename + "\n")  # Add newline for readability
+                  with open(filename, mode, encoding="utf-8") as file:
+                      file.write(text_output + "\n")  # Add newline for readability
+                  print(f"Data successfully written to '{filename}' in mode '{mode}'.")
+              except OSError as e:
+                  print(f"File error: {e}")
             except OSError as e:
                 print(f"File error: {e}")
     except Exception as e:

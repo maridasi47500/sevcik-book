@@ -16,10 +16,9 @@ class MusicalFragment < ApplicationRecord
   has_and_belongs_to_many :modificateurs
   has_and_belongs_to_many :rhythmic_types
   has_and_belongs_to_many :mystrings
+  has_and_belongs_to_many :bow_techniques
   has_and_belongs_to_many :left_hand_techniques
   has_and_belongs_to_many :actions
-  after_create :hello
-  after_update :hello
   def hello
     # The title we want to parse and seed
     title_string = title#"Double stops in sixths and fourths"
@@ -43,7 +42,7 @@ class MusicalFragment < ApplicationRecord
       intervalles: Intervalle,
       type_accords: TypeAccord,
       harmonique_natures: HarmoniqueNature,
-      measure_units: MeasureUnits, 
+      measure_units: MeasureUnit, 
       voices: Voice,
       mystrings: Mystring,
       left_hand_techniques: LeftHandTechnique

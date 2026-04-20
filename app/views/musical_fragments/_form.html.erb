@@ -85,6 +85,12 @@
         <%= f.label :bow_location_id, "Localisation (Nut/Tip)" %>
         <%= f.collection_select :bow_location_id, BowLocation.all, :id, :name %>
       </div>
+    <div class="field">
+      <label>technique d'archet</label>
+      <div class="flex flex-wrap gap-4">
+        <%= f.collection_check_boxes :bow_technique_ids, BowTechnique.all, :id, :name %>
+      </div>
+    </div>
     </div>
   </fieldset>
 
